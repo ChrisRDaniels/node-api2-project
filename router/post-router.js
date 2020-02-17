@@ -2,9 +2,9 @@ const router = require("express").Router();
 
 const db = require("../data/db");
 
-// ALL ENDPOINTS BEGIN WITH /api/posts
+// ALL ENDPOINTS BEGIN WILL BEGIN WITH /api/posts
 
-// GET ALL POSTS
+// GET A LIST OF ALL POSTS
 router.get("/", (req, res) => {
  db
   .find()
@@ -18,7 +18,7 @@ router.get("/", (req, res) => {
   });
 });
 
-// ADD POST
+// ADD A NEW POST
 router.post("/", (req, res) => {
  const newPost = req.body;
  if (!newPost.title || !newPost.contents) {
@@ -40,7 +40,7 @@ router.post("/", (req, res) => {
  }
 });
 
-// GET POST BY ID
+// GET A SPECIFIC POST BY ID
 router.get("/:id", (req, res) => {
  db
   .findById(req.params.id)
@@ -61,7 +61,7 @@ router.get("/:id", (req, res) => {
   });
 });
 
-// DELETE POST BY ID
+// DELETE A POST BY SPECIFIC ID
 router.delete("/:id", (req, res) => {
  db
   .findById(req.params.id)
@@ -89,7 +89,7 @@ router.delete("/:id", (req, res) => {
   });
 });
 
-//EDIT POST BY ID
+//EDIT A POST BY A SPECIFIC ID
 router.put("/:id", (req, res) => {
  if (!req.body.title || !req.body.contents) {
   res.status(400).json({
@@ -118,7 +118,7 @@ router.put("/:id", (req, res) => {
   });
 });
 
-// ADD COMMENT TO POST WITH THAT ID
+// ADD A TEXT COMMENT TO A POST BY SPECIFIC ID
 router.post("/:id/comments", (req, res) => {
  const { id } = req.params;
  const { text } = req.body;
@@ -153,7 +153,7 @@ router.post("/:id/comments", (req, res) => {
  }
 });
 
-// GET COMMENTS BY POST!
+// GET AN ARRAY OF COMMENTS FROM A SPECIFIC POSTS ID
 router.get("/:id/comments", (req, res) => {
  db
   .findById(req.params.id)
