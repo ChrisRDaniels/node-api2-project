@@ -40,7 +40,7 @@ router.post("/", (req, res) => {
  }
 });
 
-// GET A SPECIFIC POST BY ID
+// GET A POST BY SPECIFIC ID
 router.get("/:id", (req, res) => {
  db
   .findById(req.params.id)
@@ -118,7 +118,7 @@ router.put("/:id", (req, res) => {
   });
 });
 
-// ADD A TEXT COMMENT TO A POST BY SPECIFIC ID
+// ADD A TEXT COMMENT TO A POST BY A SPECIFIC ID
 router.post("/:id/comments", (req, res) => {
  const { id } = req.params;
  const { text } = req.body;
@@ -153,7 +153,7 @@ router.post("/:id/comments", (req, res) => {
  }
 });
 
-// GET AN ARRAY OF COMMENTS FROM A SPECIFIC POSTS ID
+// GET AN ARRAY OF COMMENTS FROM A POST BY A SPECIFIC ID
 router.get("/:id/comments", (req, res) => {
  db
   .findById(req.params.id)
