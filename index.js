@@ -1,6 +1,6 @@
 const express = require("express");
 
-// STEP 1 -  BRING IN ROUTER
+// STEP 1 - BRING IN THE EXPRESS ROUTER
 const postRouter = require("./router/post-router.js");
 
 const server = express();
@@ -13,9 +13,11 @@ server.get("/", (req, res) => {
   `);
 });
 
-// STEP 2, USE THE ROUTER
+// STEP 2 - USE THE EXPRESS ROUTER
 server.use("/api/posts", postRouter);
 
-server.listen(5000, () => {
- console.log(`*** Server Running on http://localhost:5000 ***`);
+const port = 5000;
+
+server.listen(port, () => {
+ console.log(`*** Server Running on http://localhost:${port} ***`);
 });
